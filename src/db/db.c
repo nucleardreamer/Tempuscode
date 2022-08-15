@@ -342,9 +342,9 @@ boot_db(void)
 
     slog("Connecting to postgres.");
     if (production_mode)
-        sql_cxn = PQconnectdb("user=realm dbname=tempus");
+        sql_cxn = PQconnectdb("hostaddr=127.0.0.1 user=realm dbname=tempus");
     else
-        sql_cxn = PQconnectdb("user=realm dbname=devtempus");
+        sql_cxn = PQconnectdb("hostaddr=127.0.0.1 user=realm dbname=devtempus");
     if (!sql_cxn) {
         slog("Couldn't allocate postgres connection!");
         safe_exit(1);

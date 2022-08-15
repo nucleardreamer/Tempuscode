@@ -65,10 +65,10 @@ Tempuscode uses both the lib/ directory and a postgresql database to
 store its data.  The postgreql database must be set up correctly for
 Tempuscode to run.
 
-   sudo sed -i "/^# TYPE / a\local   devtempus   realm    trust" /etc/postgresql/*/main/pg_hba.conf
-   sudo /etc/init.d/postgresql reload
-   sudo su - postgres -c 'createuser -d -R -S realm'
-   sudo su - postgres -c 'createdb -O realm devtempus'
+   sed -i "/^# TYPE / a\local   devtempus   realm    trust" /var/lib/postgresql/data/pg_hba.conf
+   /etc/init.d/postgresql reload
+   su - postgres -c 'createuser -d -R -S realm'
+   su - postgres -c 'createdb -O realm devtempus'
    psql -U realm -d devtempus -f sample_lib/etc/tempus.sql
 
 Running Tempuscode
