@@ -65,12 +65,19 @@ Tempuscode uses both the lib/ directory and a postgresql database to
 store its data.  The postgreql database must be set up correctly for
 Tempuscode to run.
 
+```
    sed -i "/^# TYPE / a\local   devtempus   realm    trust" /var/lib/postgresql/data/pg_hba.conf
+   
    /etc/init.d/postgresql reload # since this is containerized, restart the container instead, keeping command there for posterity
+   
    su - postgres -c 'createuser -h 0.0.0.0 -d -R -S realm' # confirm if this is just for windows docker...?
+   
    su - postgres -c 'createdb -h 0.0.0.0 -O realm devtempus' # reminder 0.0.0.0 for windows...
+   
    # log out of postgres if you were logged in...
+   
    psql -h 0.0.0.0 -U realm -d devtempus -f sample_lib/etc/tempus.sql
+```
 
 Running Tempuscode
 ------------------------------------------------------------------------
