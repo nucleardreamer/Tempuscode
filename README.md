@@ -66,10 +66,11 @@ store its data.  The postgreql database must be set up correctly for
 Tempuscode to run.
 
    sed -i "/^# TYPE / a\local   devtempus   realm    trust" /var/lib/postgresql/data/pg_hba.conf
-   /etc/init.d/postgresql reload
-   su - postgres -c 'createuser -d -R -S realm'
-   su - postgres -c 'createdb -O realm devtempus'
-   psql -U realm -d devtempus -f sample_lib/etc/tempus.sql
+   /etc/init.d/postgresql reload # since this is containerized, restart the container instead, keeping command there for posterity
+   su - postgres -c 'createuser -h 0.0.0.0 -d -R -S realm' # confirm if this is just for windows docker...?
+   su - postgres -c 'createdb -h 0.0.0.0 -O realm devtempus' # reminder 0.0.0.0 for windows...
+   # log out of postgres if you were logged in...
+   psql -h 0.0.0.0 -U realm -d devtempus -f sample_lib/etc/tempus.sql
 
 Running Tempuscode
 ------------------------------------------------------------------------
@@ -83,3 +84,20 @@ You should now be able to run the code with this command:
 
 Happy hacking!
 
+## Stuff we're still figuring out...
+
+Joining the server...
+
+Windows Docker ...need to find out what localhost actually is...?
+
+*CAN* connect in container
+
+for balena
+
+  change port 4040 -> 80
+
+for aws or digital ocean
+
+  need to configure network settings for players to join...
+
+  need to find out what directory needs to be stored for game data...
