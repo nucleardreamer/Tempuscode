@@ -84,6 +84,8 @@ You should now be able to run the code with this command:
 
 Happy hacking!
 
+## Stuff we're still figuring out...
+
 Joining the server...
 
 Windows Docker ...need to find out what localhost actually is...?
