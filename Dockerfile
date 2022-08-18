@@ -19,5 +19,6 @@ RUN ./configure
 
 RUN make all && make install
 
-CMD /tempus/bin/circle sample_lib
-# CMD while : ; do echo "${MESSAGE=Idling...}"; sleep ${INTERVAL=600}; done
+# CMD /tempus/bin/circle sample_lib
+
+CMD while : ; do echo "${MESSAGE=Idling...}"; sleep ${INTERVAL=600}; done
